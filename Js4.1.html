@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsPractice1</title>
+
+    <noscript>
+        <p>本页面需要浏览器支持（启用）Javascript</p>
+    </noscript>
+
+
+    <!--script 标签属性介绍>
+
+    <!-- 引用外部js文件方法 -->
+    <!-- 引用外部时才用async异步属性 -->
+    <script type="text/javascript" src="js/XML注意事项.js"></script>
+
+    <!-- 可以引用外部域的js代码 -->
+    <!-- 在此引用百度地图的API -->
+    <!-- 延迟脚本defer -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=NpEUFcGCWBXPBjiH5bueGXFboNDNfFgp"></script>
+
+    <!-- 内部嵌入JS代码 -->
+    <!-- 使用转义字符输出/号 -->
+    <script type="text/javascript">
+        function sayHi(){
+          alert("<\/script>");
+        }
+    </script>
+
+    <!-- 关键字和保留字
+    class enum extends super
+    const export import
+    implements package public
+    interface private static
+    let protected yield
+    -->
+
+
+
+    <!--
+    Object对象类型
+    constructor 构造函数
+    hasOwnProperty("propertyName") 检查属性是否存在于实例中
+    isPrototypeOf(object) 检查传入的对象是否是传入对象的原型
+    propertyIsEnumerable("propertyName") 用于检查给定的属性是否能用for-in来枚举
+    toLocaleString(); 返回对象的字符串表示
+    valueOf(); 返回对象的字符串、数值或布尔值表示。
+     -->
+    <script>
+        var o = new Object();
+    </script>
+
+    <!-- 条件操作符 -->
+    <script>
+        var num1=1 , num2 = 2;        var max = ( num1 > num2 ) ? num1 : num2;
+    </script>
+
+
+    <!-- 函数 -->
+    <!-- 判断该函数被传入了几个元素，然后分别进行操作 -->
+    <!-- JS的函数没有重载功能 -->
+    <script>
+        function doAdd(){
+          if(arguments.length == 1){
+            alert(arguments[0] + 10)
+          }else if(arguments.length == 2){
+            alert(arguments[0]+arguments[1]);
+          }
+        }
+        doAdd(10);
+        doAdd(30,20);
+    </script>
+
+    <!-- 动态属性 -->
+    <script>
+        var person = new Object();
+        person.name = "Nicholas";
+        alert(person.name);
+    </script>
+
+    <!-- 传递参数 -->
+    <script>
+        function addTen(num){
+          num += 10;
+          return num;
+          var count = 20;
+          var result = addTen(count);
+          alert(count);
+          alert(result);
+        }
+
+        function setName(obj){
+          obj.name = "Douandi";
+        }
+        var person = new Object();
+        setName(person);
+        alert(person.name);
+    </script>
+
+    <!-- 对象类型传递 -->
+    <!-- obj2实际是一个指针指向obj1 -->
+    <script>
+        var obj1 = new Object();
+        var obj2 = obj1;
+        obj1.name = "Douandi";
+        alert(obj2.name);
+    </script>
+
+    <!-- 检测类型 -->
+    <script>
+        var s = "Douandi";
+        var b = true;
+        var i = 22;
+        var u;
+        var n = null;
+        var o = new Object();
+
+        alert(typeof s);
+        alert(typeof b);
+        alert(typeof i);
+        alert(typeof u);
+        alert(typeof n);
+        alert(typeof o);
+        <!-- 判断对象类型是否是预测值 -->
+        <!-- instanceof -->
+        alert(s instanceof String);
+        alert(b instanceof Boolean);
+
+    </script>
+
+    <!-- 执行环境以及作用域 -->
+    <script>
+        var color = "blue";
+        function changeColor() {
+          if(color === "blue"){
+            color = "red";
+          }else{
+            color = "blue";
+          }
+        }
+        changeColor();
+        alert("Color is now" + color);
+    </script>
+
+    <script>
+        var color = "blue";
+        function changeColor() {
+          var anotherColor = "red";
+          function swapColors() {
+            var temColor = anotherColor;
+            anotherColor = color;
+            color = tempColor;
+            //这里可以访问temColor anotherColor color
+          }
+          //这里可以访问color anotherColor但不能访问temcolor
+        }
+    </script>
+
+    <!-- 延长作用域链 -->
+    <script>
+        function buildUrl() {
+          var qs = "?debug=true";
+          with (location) {
+            var url = href + qs;
+          }
+          return url;
+        }
+    </script>
+
+    <!-- 没有块级作用域 -->
+    <script>
+
+        if(true){
+          var color = "blue";
+        }
+        alert(color); //"blue"
+
+        for (var i = 0; i < 10; i++){
+          doSomeThing(i);
+        }
+        alert(i); //10
+
+        function add(num1,num2){
+          sum = num1 + num2;
+          return sum;
+        }
+        var result = add(10,20);
+        alert(sum);//报错
+    </script>
+
+    <!-- 查询标识符 -->
+    <script>
+
+        var color = "blue";
+        function getColor() {
+          return color;
+        }
+        alert(getColor());//"blue"
+
+    </script>
+
+    <script>
+        var color = "blue";
+        function getColor() {
+          var color = "red";
+          return color;
+        }
+        alert(getColor());//"red"
+    </script>
+
+    <!-- 对象字面量表示法 -->
+    <script>
+        var person = {
+          name: "Doudnandi",
+          age: 29
+        };
+
+        function displayInfo(args) {
+          var output = "";
+          if(typeof args.name == "string"){
+            output += "Age:" + args.name + "\n";
+          }
+          if(typeof args.age == "number"){
+            output += "Age: " + args.age + "\n";
+          }
+          alert(output);
+        }
+        displayInfo({
+          name: "Douandi",
+          age: 29
+        })
+        displayInfo({
+          name: "Greg"
+        })
+    </script>
+
+    <!-- 方括号形式访问对象属性 -->
+    <script>
+        alert(person["name"]);
+        alert(person.name);//两者相同
+
+        person["first name"] = "Douandi";//属性名可以包含空格
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+<script>
+    sayHi();
+    compare(2,1);
+//    var message;
+//    alert(message == true)
+    alert(messageAsBoolean);
+</script>
+
+</body>
+
+</html>
