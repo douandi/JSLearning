@@ -47,3 +47,23 @@ with(location){
 
 //条件操作符
 var num1=1 , num2 = 2;        var max = ( num1 > num2 ) ? num1 : num2;
+
+//检测类型
+var s = "Douandi";
+var b = true;
+var i = 22;
+var u;
+var n = null;
+var o = new Object();
+
+alert(typeof s);
+alert(typeof b);
+alert(typeof i);
+alert(typeof u);
+alert(typeof n);
+alert(typeof o);
+
+//判断对象类型是否是预测值
+//instanceof
+alert(s instanceof String);
+alert(b instanceof Boolean);
