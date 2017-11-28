@@ -77,4 +77,7 @@ function createComparisonFunction(propertyName){
   }
 }
 var data = [{name:'Zachary',age:28},{name:"Dou",age:30}];
-data.sort
+data.sort(createComparisonFunction("name"));
+alert(data[0].name); //Nicholas
+data.sort(createComparisonFunction("age"));
+alert(data[0].name); //Zachary

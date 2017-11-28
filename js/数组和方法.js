@@ -83,18 +83,19 @@ var values = [1,2.3,4,5];
 values.reverse();
 alert(values);
 
+//若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+//若 a 等于 b，则返回 0。
+//若 a 大于 b，则返回一个大于 0 的值。
 function compare(value1,value2){
   if(value1 < value2){
     return -1;
   }else if(value1 > value2){
     return 1;
   }
-
   else{
     return 0;
   }
 }
-
 var values = [0, 1, 5, 10, 15];
 values.sort(compare);
 
