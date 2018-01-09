@@ -81,3 +81,28 @@ data.sort(createComparisonFunction("name"));
 alert(data[0].name); //Nicholas
 data.sort(createComparisonFunction("age"));
 alert(data[0].name); //Zachary
+
+//函数的内部属性
+function factorial(num){
+  if(num <=1){
+    return 1;
+  }else{
+    return num * factorial(num - 1);
+  }
+}
+//定义了一个阶乘函数，此为一个递归算法
+//为了防止递归与函数名一致，在此引用一个内部属性
+function factorial(num){
+  if(num <=1){
+    return 1;
+  }else{
+    return num * arguments.callee(num - 1);
+  }
+}
+//效果：
+var tureFactorial = factorial;
+factorial = function(){
+  return 0;
+}
+alert(tureFactorial(5));//120
+alert(factorial(5));//0
